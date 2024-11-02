@@ -42,5 +42,19 @@ const getNumberLinesToBet = () => {
   }
 };
 
-const depositAmount = deposit();
+const getBet = (balance, Lines) => {
+  while (true) {
+    const bet = prompt("Deposite o numero total da aposta por linha: ");
+    const numberBet = parseFloat(bet); // Corrigido para 'numberBet'
+
+    if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / Lines) {
+      console.log("Aposta inválida. Tente de novo.");
+    } else {
+      return numberBet;
+    }
+  }
+};
+
+let balance = deposit();
 const numberOfLines = getNumberLinesToBet();
+const bet = getBet(balance, numberOfLines);
