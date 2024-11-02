@@ -1,10 +1,10 @@
-// 1. Depositar algum dinheiro na carteira
-// 2. Determinar numero de linhas para apostar
-// 3. Coletar o dinheiro
-// 4. Girar a slot machine
-// 5. Verificar se o user ganhou
-// 6. Dar o dinheiro ao utilizador
-// 7. JOGAR DE NOVO (GAMBLINGGGGGGGGG)
+// 1. Depositar algum dinheiro na carteira (Feito);
+// 2. Determinar numero de linhas para apostar (Feito);
+// 3. Coletar o dinheiro (Por fazer);
+// 4. Girar a slot machine (Por fazer);
+// 5. Verificar se o user ganhou (Por fazer);
+// 6. Dar o dinheiro ao utilizador (Por fazer);
+// 7. JOGAR DE NOVO (GAMBLINGGGGGGGGG) (Por fazer);
 
 //Função para depositar dinheiro na carteira
 //function deposit (){
