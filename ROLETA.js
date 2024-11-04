@@ -146,7 +146,7 @@ const game = () => {
   let balance = deposit();
 
   while (true) {
-    print("TU TENS QUANTOS DINHEIROS? : $" + balance);
+    console.log("TU TENS QUANTOS DINHEIROS? : $" + balance);
     // Enquanto o user não quiser sair do jogo continua a jogar
     const numberOfLines = getNumberLinesToBet();
     const bet = getBet(balance, numberOfLines);
