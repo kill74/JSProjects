@@ -6,6 +6,7 @@
 // 6. Dar o dinheiro ao utilizador (Por fazer);
 // 7. JOGAR DE NOVO (GAMBLINGGGGGGGGG) (Por fazer);
 
+//isto serve para obter o user pronpt
 const prompt = require("prompt-sync")();
 
 // ter sempre os imports em cima do codigo
