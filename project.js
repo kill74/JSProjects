@@ -1,3 +1,11 @@
+// 1. Depositar algum dinheiro na carteira (Feito);
+// 2. Determinar numero de linhas para apostar (Feito);
+// 3. Coletar o dinheiro (Feito);
+// 4. Girar a slot machine (Feito);
+// 5. Verificar se o user ganhou (Por fazer);
+// 6. Dar o dinheiro ao utilizador (Por fazer);
+// 7. JOGAR DE NOVO (GAMBLINGGGGGGGGG) (Por fazer);
+
 const prompt = require("prompt-sync")();
 
 // ter sempre os imports em cima do codigo
@@ -103,7 +111,7 @@ const transpose = (reels) => {
 };
 const printRows = (rows) => {
   for (const row of rows) {
-    let rowString = "A";
+    let rowString = "";
     for (const [i, symbol] of row.entries()) {
       rowString += symbol;
       if (i != row.length - 1) {
@@ -113,11 +121,52 @@ const printRows = (rows) => {
     console.log(rowString);
   }
 };
-// Execução do jogo
-let balance = deposit();
-const numberOfLines = getNumberLinesToBet();
-const bet = getBet(balance, numberOfLines);
-const reels = spin();
-const rows = transpose(reels);
-console.log(reels);
-console.log(rows);
+
+const getWinnings = (rows, bet, lines) => {
+  let winnings = 0;
+  for (let row = 0; row < lines; row++) {
+    const symbols = rows[row];
+    let allSame = true;
+
+    for (const symbol of symbols) {
+      if (symbol != symbols[0]) {
+        allSame = false;
+        break; // isto simplesmente ira parar este for loop
+      }
+    }
+    if (allSame) {
+      winnings += bet * SYMBOL_VALUES[symbols[0]];
+    }
+  }
+  return winnings;
+};
+
+const game = () => {
+  // Execução do jogo
+  let balance = deposit();
+
+  while (true) {
+    print("TU TENS QUANTOS DINHEIROS? : $" + balance);
+    // Enquanto o user não quiser sair do jogo continua a jogar
+    const numberOfLines = getNumberLinesToBet();
+    const bet = getBet(balance, numberOfLines);
+    balance -= bet * numberOfLines;
+    const reels = spin();
+    const rows = transpose(reels);
+    printRows(rows);
+    const winnings = getWinnings(rows, bet, numberOfLines);
+    balance += winnings;
+    console.log("GANHASTE OMG $" + winnings.toString());
+
+    if (balance <= 0) {
+      console.log("Você não tem mais dinheiro para jogar.");
+      break;
+    }
+
+    const playAgain = prompt("Deseja jogar novamente? (S/N): ");
+
+    if (playAgain != "S") break;
+  }
+};
+
+game();
