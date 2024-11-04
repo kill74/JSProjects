@@ -13,6 +13,27 @@
 
 const prompt = require("prompt-sync")();
 
+//ter sempre os imports em cima do codigo
+const ROWS = 3;
+const COLS = 3;
+
+//ter sempre os simbolos em cima do codigo
+//nao e preciso usar "" para as keys
+const SYMBOLS_COUNT = {
+  A: 2,
+  B: 3,
+  C: 5,
+  D: 8,
+};
+
+//Valores dos símbolos
+const SYMBOL_VALUES = {
+  A: 5,
+  B: 4,
+  C: 3,
+  D: 2,
+};
+
 const deposit = () => {
   while (true) {
     const depositAmount = prompt("Deposita o montante: ");
@@ -55,6 +76,26 @@ const getBet = (balance, Lines) => {
   }
 };
 
+//todos os símbolos disponíveis e metelos em um array e meter random
+const spin = () => {
+  const symbols = []; // para fazer um array basta fazer []
+  for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+    for (let i = 0; i < count; i++) {
+      symbols.push(symbol);
+    }
+  }
+  const reels = [[], [], []]; // para fazer um array
+  for (let i = 0; i < COLS; i++) {
+    const reelsSymbols = [...symbols]; //copia os simbolos para outro array
+    for (let j = 0; j < ROWS; j++) {
+      //The Math.floor() method rounds a number DOWN to the nearest integer.
+      //Math.random ira gerar um numero random entre 0 e 1
+      const randomIndex = Math.floor(Math.random() * reelSymbols.length);
+      //ira buscar a variavel criada la em cima para meter random
+      const selectedSymbol = reelSymbols[randomIndex];
+    }
+  }
+};
 let balance = deposit();
 const numberOfLines = getNumberLinesToBet();
 const bet = getBet(balance, numberOfLines);
